@@ -1,0 +1,103 @@
+.preview {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+:root {
+  font-family: Arial, Helvetica, sans-serif;
+  --accent: rgba(72, 166, 235, 1);
+  --danger: rgba(244, 67, 54, 1);
+  --gray-1: rgba(0, 0, 0, 0.9);
+  --gray-2: rgba(0, 0, 0, 0.8);
+  --gray-3: rgba(0, 0, 0, 0.65);
+  --gray-4: rgba(0, 0, 0, 0.35);
+}
+
+.input-container {
+  position: relative;
+}
+
+label {
+  position: absolute;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--gray-4);
+  top: 50%;
+  left: 12px;
+  transform: translateY(-50%);
+  pointer-events: none;
+  transition: top 400ms cubic-bezier(0.25, 0.8, 0.25, 1),
+    left 400ms cubic-bezier(0.25, 0.8, 0.25, 1),
+    font-weight 400ms cubic-bezier(0.25, 0.8, 0.25, 1),
+    font-size 400ms cubic-bezier(0.25, 0.8, 0.25, 1),
+    padding 400ms cubic-bezier(0.25, 0.8, 0.25, 1),
+    background-color 400ms cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+input {
+  padding: 8.5px 12px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  border-radius: 8px;
+  color: var(--gray-1);
+  border: 1px solid var(--gray-3);
+  box-sizing: border-box;
+  display: block;
+  outline: none;
+  width: 361px;
+  height: 45px;
+
+  &:hover {
+    border: 1px solid var(--accent);
+  }
+
+  &::placeholder {
+    color: transparent;
+    pointer-events: none;
+  }
+
+  &:not(:placeholder-shown),
+  &:focus {
+    & + label {
+      top: 0;
+      left: 12px;
+      padding: 4px;
+      background-color: white;
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 18px;
+    }
+  }
+
+  &:not(:placeholder-shown):not(:focus) {
+    & + label {
+      color: var(--gray-3);
+    }
+  }
+
+  &:focus {
+    border: 2px solid var(--accent);
+    & + label {
+      color: var(--accent);
+    }
+  }
+
+  &:invalid {
+    border: 2px solid var(--danger);
+    & + label {
+      color: var(--danger) !important;
+    }
+  }
+
+  &:disabled {
+    color: var(--gray-4);
+    border-color: var(--gray-4);
+    background-color: white;
+    & + label {
+      color: var(--gray-4) !important;
+    }
+  }
+}
