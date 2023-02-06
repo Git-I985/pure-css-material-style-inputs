@@ -2,10 +2,11 @@ import React from 'react';
 import './style.scss';
 
 function Input({ label, ...params }) {
+  const id = React.useId();
   return (
     <div class="input-container">
-      <input {...{ ...params, placeholder: 'empty' }} />
-      <label>{label}</label>
+      <input id={id} {...{ ...params, placeholder: 'empty' }} />
+      <label for={id}>{label}</label>
     </div>
   );
 }
